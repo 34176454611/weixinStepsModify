@@ -120,7 +120,7 @@ def sbs_api_info(user, password, step):
 
 if __name__ == "__main__":
     account = [# 账号 密码 步数
-        ['3417645461@qq.com', 'l126250@77', 66666],
+        ['3417645461@qq.com', 'pwd', 66666],
         ['账号3', '密码3', 28888],
     ]
     for i in account:
