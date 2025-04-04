@@ -1,1 +1,38 @@
 
+name: Run Weixin Steps
+
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        description: 'Username'
+        required: true
+        type: string
+      password:
+        description: 'Password'
+        required: true
+        type: string
+      steps:
+        description: 'Step Count'
+        required: true
+        type: string
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install requests
+
+    - name: Run Script
+      run: |
+        python weixinSteps.py "${{ github.event.inputs.username }}" "${{ github.event.inputs.password }}" "${{ github.event.inputs.steps }}"
